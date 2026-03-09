@@ -2,6 +2,7 @@ import {Module} from "@nestjs/common";
 import {SequelizeModule} from "@nestjs/sequelize";
 import { User } from './users/users.model';
 import {ConfigModule} from "@nestjs/config";
+import {UsersModule} from "./users/users.module";
 
 @Module({
     controllers: [],
