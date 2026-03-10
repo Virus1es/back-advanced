@@ -19,6 +19,6 @@ export class UsersService {
     }
 
     async getAllUsers() {
-        return await this.userRepository.findAll();
+        return await this.userRepository.findAll({include: {all: true}});
     }
 }
