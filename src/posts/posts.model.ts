@@ -3,8 +3,10 @@ import {ApiProperty} from "@nestjs/swagger";
 import {User} from "../users/users.model";
 
 interface PostsCreationAttrs {
-    value: string;
-    description: string;
+    title: string;
+    content: string;
+    userId: number;
+    image: string;
 }
 
 @Table({tableName: 'posts'})
