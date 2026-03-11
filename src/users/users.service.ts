@@ -37,10 +37,18 @@ export class UsersService {
             return dto;
         }
 
-        throw new HttpException('User or role not find', HttpStatus.NOT_FOUND);
+        throw new HttpException('User or role not found', HttpStatus.NOT_FOUND);
     }
 
     async ban(dto: BanUserDto) {
+        const user = await this.userRepository.findByPk(dto.userId);
+        if(!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
 
+        user.banned = true;
+        user.banReason = dto.banReason;
+        await user?.save();
+        return user;
     }
 }
