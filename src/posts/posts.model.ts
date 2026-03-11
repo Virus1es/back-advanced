@@ -25,7 +25,7 @@ export class Post extends Model<Post, PostsCreationAttrs> {
     @Column({type: DataType.STRING})
     declare image: string;
 
-    @ApiProperty({example: '1', description: 'User unique identifier'})
+    @ApiProperty({example: '1', description: 'Unique identifier of user who create this post'})
     @ForeignKey(() => User)
     @Column({type: DataType.INTEGER})
     declare userId: number;
