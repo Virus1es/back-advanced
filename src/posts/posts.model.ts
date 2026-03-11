@@ -8,7 +8,7 @@ interface PostsCreationAttrs {
 }
 
 @Table({tableName: 'posts'})
-export class Posts extends Model<Posts, PostsCreationAttrs> {
+export class Post extends Model<Post, PostsCreationAttrs> {
     @ApiProperty({example: '1', description: 'Unique identifier'})
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     declare id: number;
