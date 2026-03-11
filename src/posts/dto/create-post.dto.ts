@@ -8,5 +8,5 @@ export class CreatePostDto {
     readonly content: string;
 
     @ApiProperty({example: '1', description: 'Unique identifier of user who create this post'})
-    readonly userId: string;
+    readonly userId: number;
 }
