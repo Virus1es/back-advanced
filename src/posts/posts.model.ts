@@ -1,4 +1,4 @@
-import {BelongsTo, Column, DataType, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
 import {User} from "../users/users.model";
 
@@ -24,6 +24,11 @@ export class Post extends Model<Post, PostsCreationAttrs> {
     @ApiProperty({example: 'image.jpg', description: 'Name of image that use in post'})
     @Column({type: DataType.STRING})
     declare image: string;
+
+    @ApiProperty({example: '1', description: 'User unique identifier'})
+    @ForeignKey(() => User)
+    @Column({type: DataType.INTEGER})
+    declare userId: number;
 
     @BelongsTo(() => User)
     declare author: User;
