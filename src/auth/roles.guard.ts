@@ -20,7 +20,7 @@ export class RolesGuard implements CanActivate{
 
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
         try {
-            const requiredRoles = this.reflector.getAllAndOverride(ROLES_KEY, [
+            const requiredRoles = this.reflector.getAllAndOverride<string[]>(ROLES_KEY, [
                 context.getHandler(),
                 context.getClass(),
             ]);
@@ -40,8 +40,9 @@ export class RolesGuard implements CanActivate{
 
             const user = this.jwtService.verify(token);
             req.user = user;
-            return user.roles.some(role => requiredRoles.include(role.value));
+            return user.roles.some(role => requiredRoles.includes(role.value));
         } catch (e) {
+            console.log(e);
             throw new HttpException('You have not enough access', HttpStatus.FORBIDDEN);
         }
     }
