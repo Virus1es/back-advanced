@@ -15,8 +15,6 @@ export class ValidationPipe implements PipeTransform<any> {
         const errors = await validate(obj);
 
         if(errors.length) {
-
-
             let messages = errors.map(err => {
                 if (!err.constraints) {
                     return `${err.property} - Unknown error`;
