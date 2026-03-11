@@ -13,7 +13,7 @@ export class PostsController {
     @ApiResponse({status: 200, type: [Post]})
     @Post()
     createPost(@Body() dto: CreatePostDto,
-               @UploadedFile() image: string) {
+               @UploadedFile() image) {
         return this.postsService.create(dto, image)
     }
 }
